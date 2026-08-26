@@ -202,8 +202,116 @@ The FMU output ports can use D-shot or One-shot protocols(as well as PWM),which 
 
 There are only 6-8 outputs in MAIN and AUX because most flight controllers only have this many PWM/Dshot/Oneshot outputs.In theory there can be many more outputs if the bus supports it(i.e. a UAVCAN bus is not limited to this few nodes).
 
+ESCs &Motors
+Many PX4 drones use brushless motors that are driven by the flight controller via an Electronic Speed Controller (ESC)(the ESC converts a signal from flight controller to an appropriate level of power delivered to the motor).
 
+For information about what ESC/Motors are supported by PX4 see:
 
+ESC & Motors
+ESC Calibration
+ESC Firmware and Protocols Overview(oscarliang.com)
+
+Bettery/Power
+PX4 drones are mostly commonly powered from Lithium-Polymer(LiPo) batteries.The battery is typically connected to the system using a Power Module or Power Management Board,which provide separate power for the flight controller and the ESCs(for the motors).
+
+Information about batteries and battery configuration can be found in Battery Estimation Tuning and the guides in Basic Assembly(e.g. Pixhawk 4 Wiring Quick Start > Power).
+
+Manual Control
+Pilots can control a vehicle manually using either a Radio Control (RC) System or a Joystick/Gamepad controller connected via QGoundControl.
+
+RC Systems use a dedicated ground-based radio transmitter and vehicle-based receiver for sending control information.They should always be used when first tuning/testing a new frame design,or when flying racers/acrobatically (and in other cases where low latency is important).
+
+Joystick systems use QGroundControl to encode the control information from a "standard" computer gaming joystick into MAVLink messages,and sent it to the vehicle using the (shared) telemtry radio channel.They can be used for most manual flight use cases such as taking off,surveys,ans so on,
+provided your telemetry channel has a high enough bandwidth/low latency.
+
+Joysticks are often used in integrated GCS/manual control systems because it is cheapter and easier to integrate a joystick than a separate radio system,and for the majority of use cases,the lower latency does not matter.They are also perfect for flying the PX4 simulator,
+because you can plug them directly into your ground control computer.
+
+INFO
+PX4 does not require a manual control system for autonomous flight modes.
+
+Safety Switch
+Vehicles maay include a safety switch that must be engaged before the vehicle can be armed(when armed,motors are powered and propellers can turn).
+
+This switch is almost always integrated into the GPS module that is connected to the Pixhawk Gps1 port - along with the buzzer and UI LED.
+
+The switch may be disabled by default,though this depends on the particular flight controller and airframe configuration.You can disable/enable use of the switch with the 
+CBRK_IO_SAFETY parameter.
+
+INFO
+Safety switches are optional.Many argue that it is safer for users never to approach a powered system,even to enable/disable this interlock.
+
+BUZZER
+Vehicles commonly include a buzzer fot providing audible notification of vehicle state and readiness to fly(see Tune meanings).
+
+This buzzer is almost always inegrated into GPS module that is connected to the Pixhawk GPS1 port - along with the safety switch and UI LED.You can disable the notification tunes using the  parameter CBRK_BUZZER.
+
+LEDs
+Vehicles should have a superbright UI RGB LED that indicates the current readiness for flight.
+
+Historically this was included in the flight controller board.On more recent flight controllers this is almost always an I2C peripheral inegraral integrated into the GPS module that is connected to the Pixhawk GPS1 port - along with the safety switch and buzzer.
+
+Date/Telemetry Radios
+Data/Telemetry Radios can provide a wireless MAVLink connection between a ground control station like QGroundControl and a vehicle runnung PX4.This makes it possible to tune parameters while a vehicle is in flight, inspect telemetry in real-time,change a mission on the fly,etc.
+
+Offboard/Companion Computer
+A Companion Computer(also referred to as "mission computer" or "offboard computer"),is a separate on-vehicle computer that communicates with PX4 to provide higher level command and control.
+
+The companion computer usually runs Linux,as this is a much better platform for "general" software development, and allows drones to leverage pre-existing software for computer vision,networking,and so on.
+
+The flight controller and companion computer may be pre-integrated into a single baseboard,simplifying hardware development,or may be separate,and are connected via a serial cable, Ethernet cable,or wifi.The companion computer typically communicates with PX4 using a high level Robotics API such as MAVSDK or ROS 2.
+
+Relevant topics include:
+Companion Computers
+Off-board Mode - Flight mode for offboard control of PX4 from a GCS or companion computer.
+Robotics APIs
+
+SD Cards(Removable Memory)
+PX4 uses SD memory cards for storing flight logs,and they are also required in order to use UAVCAN peripherals and fly missions.
+
+By default, if no SD card is present PX4 will play the format failed (2-beep) tune twice during boot (and none of the above features will be available).
+
+TIP
+The maximum supported SD card size on Pixhawk board is 32GB.The SanDisk Extreme U3 32GB and Samsung EVO Plus 32 are highly recommended.
+
+SD cards are never-the-less optional.Flight controllers that do not include an SD Card slot may:
+Disbale notification beeps are disabled using the parameter CBRK_BUZZER.
+Stream logs to another component(companion).
+Store mission in RAM/FLASH.
+
+Payloads
+Payloads are equipment carried by the vehicle to meet user or mission objectives,such as cameras in surveying missions,instruments used in for 
+inspections such as radiation detectors,and cargo that needs to be delivered.PX4 supports many cameras and a wide range of payloads.
+
+Payloads are connected to Flight Controller outputs,and can be triggered automatically in missions,or manually from an RC Controller or Joystick,or from a Ground Station(via MAVLink/MAVSDK commands).
+
+For more information see:Payloads & Cameras
+
+Arming and Disarming
+A vehicle is said to be armed when all motors and actuators are powered ,and disarmed when nothing is powered.There is also a prearmed state when only servo actuators are powered,which is primarily used for testing.
+
+A vehicle is usually disarmed on the ground,and must be armed before taking off in the current flight mode.
+
+WARNING
+Arming and disarming are triggered by default using RC stick gestures.On Mode 2 transmitters you arm by holding the RC throttle/yaw stick on the bottom right for one
+second,and to disarm you hold the stick on bottom left for one second.It is alternatively possible to configure PX4 to arm using an RC switch or button(and arming MAVLink commands can also be sent from a ground station).
+
+To  reduce accidents,vehicles should be armed as little as possible when the vehicle is on the ground.By default, vehicles are:
+Disarmed or Prearmed (motors unpowered) when not in use,and must be explicitly armed before taking off.
+Automatically disarm/prearm if the vehicle does not take off quickly enough after arming(the disarm time is configurable).
+Arming is prevented if the vehicle is not in a "healthy" state.
+Arming is prevented if the vehicle has a safety switch that has not been engaged.
+Arming is prevented if a VTOL vehicle is in fixed-wing mode(by default).
+Arming may be prevented due to a number of other optional arming,pre-condition settings,such as low battery.
+
+When prearmed you can still use acutators,while disarming unpowers everything.
+Prearmed and disarmed should both be safe,and a particular vehicle may support either or both.
+
+TIP
+Sometimes a vehicle will not arm for reasons that are not obvious.QGC v4.2.0(Daily build at time of writing)and later provide an arming check report in Fly View > Arming and Preflight Checks.
+From PX4 v1.14 this provides comprehensive information about arming problems along with possible solutions.
+
+A detailed overview of arming and disarming configuration can be found here:Prearm,Arm,Disarm configuration.
 
 
 
