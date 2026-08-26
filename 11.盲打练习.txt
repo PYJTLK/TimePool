@@ -1,0 +1,219 @@
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+abcdefghijklmnopqrstuvwxyz
+qqqqqqqqqqqqqqqqqqqqqq
+pppppppppppppppppppppp
+vvvvvvvvvvvvvvvvvvvvvvvvvv
+nnnnnnnnnnnnnnnnnnnnnnnn
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+mmmmmmmmmmmmmmm
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+........................................................
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+hello world hello world hello world 
+what do you mean?
+Is that the best way?
+This is my last war.
+man jiu shi kuai
+qu ta ma de duo xian cheng
+此电脑
+各种账号
+回收站
+时间池
+Learning
+毕业论文
+tools
+公司
+snapshot
+判断力训练手册
+cache
+机器人清单
+高质量高交会参观
+exec
+
+https://docs.px4.io/v1.17/en/getting_started/px4_basic_concepts
+Basic Concepts
+This topic provides a basic introduction to drones and using PX4
+(it is meant mostly for novice users but is also a good introduction for more experienced users).
+If you are already familiar with the basic concepts,you can move on to Basic Assembly to
+learn how to wire your specific autopilot hardware.To load firmware and set up the
+vehicle with QGroundControl,see Basic Configuration.
+
+What is a Drone?
+A drone,or Unnanned Vehicles(UV),is an unmanned "robotic" vehicle that can be
+manually or autonomously controlled.They can travel in air,on the ground,on/under the
+water,and are used for many consumer,industrial,government and military applications,
+including aerial photography/video, carrying cargo,racing,search and surceying,and so on.
+
+Drones are more formally referred to as Unmanned Aerial Vehicles(UAV),Unmanned Ground Vehicles(UGV),
+Unmanned Surface Vehicles(USV),Unmanned Underwater Vehicles(UUV).
+
+INFO
+The term Unmanned Aerial System(UAS) typically refers to a 
+UAV and all of the other components of a complete system,
+including a ground control station and/or radio controller,and 
+any other systems used to control the drone,capture,and process data.
+
+Drone Types
+There are many different vehicle frames(types),and within the types there are many
+variations.Some of the types,along with the use cases for which they are most suited are 
+listed below.
+
+Multicopters - Multi-rotors offer precision hovering and vertical takeoff,at the cost of shorter and 
+generally slower flight.They are the most popular type of flying vehicle,in part because they are
+easy to assemble,and PX4 has modes that make them easy to fly and very suitable as a camera platform.
+
+Helicopters - Helicopters similar benefits to Multicopters but are mechanically more complex and more 
+efficient.They are also much harder to fly.
+
+Planes(Fixed-wing) - Fixed-wind vehicles offer longer and faster flight than multicopters, and hence better coverage for 
+ground surveys etc.However they are harder to fly and land than multicopters,and aren't suitable if you need to hover or fly very slowly
+(e.g. whrn surveying vertical structures).
+
+VTOL(Vertical Takeoff and Landing) - Hybrid Fixed-wing/Multicopter vehicles offer the best of both worlds:take off in vertical mode 
+and hover like a multicopter but transition to forward flight like an airplane to cover more ground.VTOL are often more expensive than
+either multicopters and fixed-wing aircraft ,and harder to build and tune.They come in a number of types: tiltrotos,tailsitters,quadplanes etc.
+
+Airships/Balloons - Lighter-than-air vehicles that typically offer high altitude long duration flight,often at the cost of having limited (or no)control over speed and direction or flight.
+
+Rovers - Car-like ground vehicles.They are simple to control and often fun to use.They can;t travel as fast as most aircraft,but can carry heavier payloads,and  don't use much power when still.
+
+Boats - Water-surface vehicles.
+
+Submersibles - Underwater vehicles.
+
+For more information see:
+Vehicle Typeds & Setup
+Airframe setup
+Airframe Reference.
+
+Autopilots
+
+The "brain" of the drone is called an autopilot.
+
+It minimally consists of flight stack software running on a real time OS ("RTOS") on flight controller (FC) hardware. The flight stack provides essential stabilisation and safety
+features,and usually also some level of pilot assistance for manual flight and automating common tasks, such as taking off, landing,and executing predefined missions.
+
+Some autopilots also include a general-purpose computing system that can provide "higher level" command and control, and that can support more advanced networking,
+computer vision,and other features.This might be implemented as a separate companion computer,but in future it is increasingly likerly to be a fully integrated component.
+
+PX4 Flight Stack
+PX4 is powerful open source autopilot flight stack running on the NuttX RTOS.
+
+Some of PX4's key features are:
+Support many different vehicle frames//types, incuding:multicopters,fixed-wing aircraft(planes),VTOLs(hybrid multicopter/fixed-wing),ground vehicles,and underwater vehicles.
+
+Great choice of drone components for flight controller,sensors,payloads,and other peripherals.
+
+Flexible and powerfult flight modes and safety features.
+
+Robust and deep integgration with companion computers and robotics APIs such as ROS2 and MAVSDK.
+
+PX4 is a core part of a broader drone platform that includes the QGroundControl ground 
+station,Pixhawk hardware,and MAVSDK for integration with companion computers,
+cameras and other hardware using the MAVLink protocol.PX4 is supported by the Dronecode Project.
+
+Groud Control Stations
+Ground Control Stations(GCS) are ground based systems that allow UV operators to 
+monitor and control a drone and  its payloads.A subset of the products that are known to 
+work with PX4 are listed below.
+
+QGroundControl
+The Dronecode GCS software is called QGroundControl("QGC").It runs on Windows,Android,MacOS or Linux hardware,
+and supports a wide range of screen from factots.You can download it(for free) from here.
+
+QGroundControl communicates with the drone using a telemetry radio (a bidirectional data link),
+which allows you to get real-time flight and safety inormation,and to control the vehicle,camera,and 
+other payloads using a point-and-click interface.On hardware that supports them,you can also manually 
+fly the vehicle using joystick controllers.QGC can also be used to visually plan, execute,and monitor autonimous missions,set 
+geofences,and  much more.
+
+QGroundControl desktop versions are also used to install(flash) PX4 firmware and configure PX4 on the drone's autopilot/flight 
+controller hardware.
+
+Auterion Mission Control(AMC)
+Auterion Mission Control is a powerful and fully featured ground control station application
+that is optimized for pilots rather than vehicle configuration.While designed to work with 
+Auterion products,it can be used with "vanilla" PX4.
+
+For more information see:
+AMC docs
+Download from Auterion Suite
+
+Drone Components & Parts
+Flight Controller
+Flight controllers (FC) are the hardware onto which the PX4 flight stack firmware is loaded and run.
+They are connected to sensors from which PX4 determines its state,and to the actuators/motors that 
+it uses to stabilise and move the vehicle.
+
+PX4 can run on many different types of Flight Controller Hardware,ranging from Pixhawk Series controllers to Linux computers.
+These include Pixhawk Standard and manufacturer-supported boards.You should select a board that suits the physical constraints of
+your vehicle,the activities you wish to perform,and cost.
+
+For more information see: Flight Controller Selection
+
+Sensors
+PX4 uses sensors to determine vehicle state,which it needs in order to stablise the vehicle and enable 
+autonomous control.The vehicle states include: position/altitude,heading,speed,airspeed,orientation(attitude),
+rates of rotation in different axes,battery level,and so on.
+
+PX4 minially requires a gyroscope,accelerometer,magnetometer(compass)and barometer.This minimal set
+of sensors is incorporated into Pixhawk Series flight controllers
+(and may also be in other controller platforms).
+
+Additional/external sensors can be attached to the controller.The following sensors are recommended:
+A GNSS/GPS or other source of global position is needed to enable all automatic modes,
+and some manual/assisted modes.
+
+Typically a module that combines a GNSS and Compass is used,as an external compass can be
+made less susceptible to electromomagnetic interference than the internal compass in the flight controller.
+
+Airspeed sensors are highly recommended for fixed-wing and VTOL-vehicles.
+
+Distance Sensors(Rangefinders)are highly recommended for all vehicle types,as they allow smoother and
+more robust landings,and enable features such as terrain following on multicopters.
+
+Optical Flow Sensors can be used with distance sensors on multicopters and VTOL to support navigation in GNSS-denied environments.
+
+For more information about sensors see:Sensor Hardware & Setup.
+
+Outputs: Motors ,Servos,Actuators
+PX4 uses outputs to control:motor speed(e.g. via ESC),flight surfaces like ailerons and flaps,camera triggers,parachutes,grippers,and many other types of payloads.
+
+The outputs may be PWM ports or DroneCAN nodes(e.g. DroneCAN motor controllers).
+The images below show the PWM output ports for Pixhawk 4 and Pixhawk 4 mini.
+
+The outputs are divided into MAIN and AUX outputs,and individually numbered(i.e. MAINn and AUXn,where n is 1 to usually 6 or 8).They might also be marked as IO PWM Out and FMU PWM OUT(or similar).
+
+WARNING
+A light controller may only have MAIN PWM outputs(like the Pixhawk 4 mini),or may have only 6 outputs on tither MAIN or AUX.Ensure that you select a controller that has enough ports/outputs for your airframe.
+
+You can connect almost any output to any motor or other actuator,by assigning the associated function("Motor 1")to the desired output("AUX1")in QGroundControl:Actuator Configuration and Testing.Note that the 
+functions (motor and control surface actuator positions) for each frame are given in the Airframe Reference.
+
+Notes:
+Pixhawk controllers have an FMU board and may have a separate IO board.If there is an IO board,the AUX ports are connected directly to FMU and the MAIN ports are 
+connected to the IO board.Otherwise the MAIN ports are connected to the FMU,and there are no ports.
+
+The FMU output ports can use D-shot or One-shot protocols(as well as PWM),which provide much lower-latency behaviour.This can be useful for racers and other airframes that require better performance.
+
+There are only 6-8 outputs in MAIN and AUX because most flight controllers only have this many PWM/Dshot/Oneshot outputs.In theory there can be many more outputs if the bus supports it(i.e. a UAVCAN bus is not limited to this few nodes).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
