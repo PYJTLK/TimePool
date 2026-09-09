@@ -5,11 +5,12 @@
 <1>2026-9-6 研究最终决战规划
 
 <1>2026-9-9 越疆Rover X1
-	1.阅读SDK页
+	ojbk1.阅读SDK页
 	2.阅读高层API
 	3.阅读低层API
-	4.阅读Github Readme
-	5.分析回顾
+ 	4.阅读Quick Start
+	5.阅读Github Readme
+	6.分析回顾
 
 
 
