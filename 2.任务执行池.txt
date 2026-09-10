@@ -9,7 +9,7 @@
 	2.阅读高层API
 	3.阅读低层API
  	ojbk4.阅读Quick Start
-	5.阅读Github Readme
+	ojbk5.阅读Github Readme
 
 
 
