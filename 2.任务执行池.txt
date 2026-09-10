@@ -8,9 +8,8 @@
 	ojbk1.阅读SDK页
 	2.阅读高层API
 	3.阅读低层API
- 	4.阅读Quick Start
+ 	ojbk4.阅读Quick Start
 	5.阅读Github Readme
-	6.分析回顾
 
 
 
