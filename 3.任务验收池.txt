@@ -1,5 +1,7 @@
 写入当天执行完的任务
 
+<2>2026-9-26 学习RVIZ2 Display、Panel
+
 <2>2026-9-26 学习RVIZ2 Types
 
 <2>2026-9-25 学习RVIZ2 points/line
