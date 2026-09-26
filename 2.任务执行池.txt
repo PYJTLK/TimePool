@@ -16,7 +16,7 @@
 
 <2>2026-9-25 学习Tf2 Debug
 
-<2>2026-9-25 学习RVIZ2 shape
+<2>2026-9-25 学习RVIZ2 points/line
 
 
 
