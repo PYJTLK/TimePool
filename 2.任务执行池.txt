@@ -4,23 +4,11 @@
 
 <1>2026-9-6 研究最终决战规划
 
-<2>2026-9-22 优化遥控程序
-
-<2>2026-9-23 阅读Nav2概念预览
-	ojbk Home
-	ojbk ROS2
-	Behaviour Tree
-	Navigation Servers
-	State Estimation
-	Environmental Representation
-
 <2>2026-9-25 学习Tf2 Debug
 
 <2>2026-9-26 URDF+Gazebo
 
-
-
-
+<2>2026-10-1 学习NAV2 SLAM
 
 
 
