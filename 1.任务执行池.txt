@@ -6,6 +6,6 @@
 
 <3>2026-11-18 核对、提交材料
 
-<2>2026-11-18 学习Setting Up The URDF
+<2>2026-11-18 学习Setting Up Odometry
 
 
